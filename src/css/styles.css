@@ -23,3 +23,121 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+.wraper {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+  width: 1136px;
+}
+
+.button {
+  width: 90px;
+  height: 40px;
+  background-color: lightskyblue;
+  border: none;
+}
+
+.input-for-gallery {
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #808080;
+}
+
+.input-for-gallery:active {
+  border: 1px solid blue;
+}
+
+.gallery-form {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.image-frame {
+  border: 1px solid #808080;
+  width: 360px;
+  height: 200px;
+}
+
+.image {
+  height: 152px;
+  width: 360px;
+}
+
+.gallery-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px 24px;
+}
+
+.text-block {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.text-wraper {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+}
+
+.loader {
+  display: block;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.loader::before,
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 5px solid #FFF;
+  animation: prixClipFix 2s linear infinite;
+}
+
+.loader::after {
+  transform: rotate3d(90, 90, 0, 180deg);
+  border-color: #FF3D00;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg)
+  }
+
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+@keyframes prixClipFix {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
+  }
+
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
+  }
+
+  75%,
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
+  }
+}
+
+.hiden {
+  display: none;
+}
