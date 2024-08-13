@@ -17,8 +17,19 @@ function handleSubmit(event) {
   clearImages();
   event.preventDefault();
   loader.classList.remove('hiden');
+  message.classList.remove('show-text');
   let wordForSearch = input.value.trim();
-  searchImagesByQuery(`${wordForSearch}`).then(data => {
+  wordFromStart = wordForSearch;
+  page = 1;
+  if (wordForSearch === '') {
+    iziToast.error({
+      position: 'topRight',
+      message: 'Please fill the input',
+    });
+    loader.classList.add('hiden');
+    return;
+  }
+  searchImagesByQuery(`${wordForSearch}`, page).then(async data => {
     if (data.total === 0) {
       iziToast.error({
         position: 'topRight',
@@ -27,17 +38,9 @@ function handleSubmit(event) {
       });
       loader.classList.add('hiden');
       return;
-    }
-    if (wordForSearch === '') {
-      iziToast.error({
-        position: 'topRight',
-        message: 'Please fill the input',
-      });
-      loader.classList.add('hiden');
-      return;
     } else {
-      createImages(data);
+      await createImages(data);
+      button.classList.remove('hiden');
     }
-    loader.classList.add('hiden');
   });
 }
