@@ -17,10 +17,8 @@ function handleSubmit(event) {
   clearImages();
   event.preventDefault();
   loader.classList.remove('hiden');
-  message.classList.remove('show-text');
   let wordForSearch = input.value.trim();
-  wordFromStart = wordForSearch;
-  page = 1;
+  const page = 1;
   if (wordForSearch === '') {
     iziToast.error({
       position: 'topRight',
@@ -39,8 +37,7 @@ function handleSubmit(event) {
       loader.classList.add('hiden');
       return;
     } else {
-      await createImages(data);
-      button.classList.remove('hiden');
+      createImages(data);
     }
   });
 }
